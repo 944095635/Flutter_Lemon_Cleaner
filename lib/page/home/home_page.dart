@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
+import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled/radius_extension.dart';
 import 'package:flutter_styled/size_extension.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lemon_cleaner/model/chart_sample_data.dart';
+import 'package:lottie/lottie.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,11 +24,17 @@ class _HomePageState extends State<HomePage>
   /// 旋转动画控制器
   late AnimationController _controller;
 
+  // 动画效果序号 1-10
+  int animationType = 0;
+
   Timer? timer;
 
   //Cpu使用率
   int wave1 = 1;
   List<ChartSampleData>? chartData1;
+
+  /// 数据刷新通知
+  late ValueNotifier valueListenable;
 
   _HomePageState() {
     chartData1 = [];
@@ -39,12 +47,11 @@ class _HomePageState extends State<HomePage>
 
   void _updateData(Timer timer) async {
     if (mounted) {
-      setState(() {
-        chartData1!.removeAt(0);
-        chartData1!
-            .add(ChartSampleData(x: wave1, y: Random().nextInt(65) + 10)); // );
-        wave1 = wave1 + 1;
-      });
+      chartData1!.removeAt(0);
+      chartData1!
+          .add(ChartSampleData(x: wave1, y: Random().nextInt(65) + 10)); // );
+      wave1 = wave1 + 1;
+      valueListenable.value = wave1;
     }
   }
 
@@ -55,6 +62,7 @@ class _HomePageState extends State<HomePage>
       vsync: this,
       duration: const Duration(seconds: 20),
     )..repeat();
+    valueListenable = ValueNotifier(wave1);
   }
 
   @override
@@ -66,6 +74,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("绘制build");
     if (Platform.isAndroid) {
       // 安卓只显示左侧盒子
       return buildLeftBox();
@@ -85,138 +94,145 @@ class _HomePageState extends State<HomePage>
 
   // 左侧盒子
   Widget buildLeftBox() {
+    debugPrint("绘制LeftBox");
     //动画组件
     //畅快清理 · 清爽一下
     //欢迎使用Lemon Cleaner
     //开始扫描
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        40.verticalSpace,
-        const Text(
-          "Lemon Cleaner",
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: "ITCAvantGarde",
-            color: Color(0xFFE5F0FF),
-            fontWeight: FontWeight.bold,
+        30.verticalSpace,
+        const Padding(
+          padding: EdgeInsets.only(left: 40),
+          child: Text(
+            "Lemon Cleaner",
+            style: TextStyle(
+              fontSize: 26,
+              fontFamily: "ITCAvantGarde",
+              color: Color(0xFFE5F0FF),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        const Spacer(),
-        SizedBox(
-          width: 260,
-          height: 260,
-          child: Stack(
-            fit: StackFit.expand,
+        Expanded(
+          child: Column(
             children: [
-              // Lottie.asset(
-              //   'images/12.json',
-              // ),
-              // WaveWidget(
-              //   config: CustomConfig(
-              //     colors: _colors,
-              //     durations: _durations,
-              //     heightPercentages: _heightPercentages,
-              //   ),
-              //   size: Size(double.infinity, double.infinity),
-              //   waveAmplitude: 0,
-              // ),
-
-              RotationTransition(
-                turns: _controller, // 使用 AnimationController 控制旋转
-                child: Image.asset("images/sylops-symbol.png"),
+              SizedBox(
+                width: 240,
+                height: 340,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    // Lottie.asset(
+                    //   'images/2.json',
+                    // ),
+                    RotationTransition(
+                      turns: _controller, // 使用 AnimationController 控制旋转
+                      child: Image.asset("images/sylops-symbol.png"),
+                    ),
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "CPU",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFFBEBEBE),
+                            fontFamily: "ITCAvantGarde",
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "98%",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "CPU",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFFBEBEBE),
-                      fontFamily: "ITCAvantGarde",
-                      fontWeight: FontWeight.bold,
+              const Spacer(),
+              const Text(
+                "畅快清理 · 清爽一下",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Color(0xFFE5F0FF),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              10.verticalSpace,
+              const Text(
+                "欢迎使用 Lemon Cleaner",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF6D748F),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              30.verticalSpace,
+              //230*50
+              20.verticalSpace,
+              //  Color(0xFF2B90CC),
+              //  Color(0xFF2D93CC),
+              //  Color(0xFF57C6CC),
+              //  Color(0xFF5FC9CA),
+              SizedBox(
+                width: 230,
+                height: 50,
+                child: ClipRRect(
+                  borderRadius: 8.borderRadius,
+                  child: AnimateGradient(
+                    primaryBegin: Alignment.topLeft,
+                    primaryEnd: Alignment.topCenter,
+                    secondaryBegin: Alignment.bottomCenter,
+                    secondaryEnd: Alignment.bottomRight,
+                    primaryColors: const [
+                      Color(0xFF2D93CC),
+                      Color(0xFF2D93CC),
+                      Color(0xFF42adcc),
+                      Color(0xFF57C6CC),
+                      Color(0xFF5FC9CA),
+                    ],
+                    secondaryColors: const [
+                      Color(0xFF2B90CC),
+                      Color(0xFF2D93CC),
+                      Color(0xFF42adcc),
+                      Color(0xFF57C6CC),
+                      Color(0xFF5FC9CA),
+                    ],
+                    child: InkWell(
+                      onTap: () {
+                        debugPrint("x");
+                      },
+                      child: const Center(
+                        child: Text(
+                          "开始扫描",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFFE2F4F6),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  Text(
-                    "98%",
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+                ),
               ),
+              70.verticalSpace,
             ],
           ),
         ),
-
-        const Spacer(),
-        const Text(
-          "畅快清理 · 清爽一下",
-          style: TextStyle(
-            fontSize: 24,
-            color: Color(0xFFE5F0FF),
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        10.verticalSpace,
-        const Text(
-          "欢迎使用 Lemon Cleaner",
-          style: TextStyle(
-            fontSize: 14,
-            color: Color(0xFF6D748F),
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        30.verticalSpace,
-        //230*50
-        SizedBox(
-          width: 230,
-          height: 50,
-          child: FilledButton(
-            style: ButtonStyle(
-              backgroundBuilder: (context, states, child) {
-                return DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xFF2B90CC),
-                          Color(0xFF2D93CC),
-                          Color(0xFF57C6CC),
-                          Color(0xFF5FC9CA),
-                        ],
-                        stops: [
-                          0,
-                          0.3,
-                          0.7,
-                          1
-                        ]),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: child,
-                );
-              },
-            ),
-            onPressed: () {},
-            child: const Text(
-              "开始扫描",
-              style: TextStyle(
-                fontSize: 18,
-                color: Color(0xFFE2F4F6),
-              ),
-            ),
-          ),
-        ),
-        80.verticalSpace,
       ],
     );
   }
 
   /// 右侧区域
   Widget buildRightBox() {
+    debugPrint("绘制RightBox");
     return Padding(
       padding: const EdgeInsets.only(right: 30, bottom: 50),
       // 2行，3*3的格子 第一行2份行 第二行1份行
@@ -366,7 +382,9 @@ class _HomePageState extends State<HomePage>
                 20.horizontalSpace,
                 Flexible(
                   flex: 2,
-                  child: buildChart(),
+                  child: RepaintBoundary(
+                    child: buildChart(),
+                  ),
                 ),
               ],
             ),
@@ -549,6 +567,7 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget buildChart() {
+    debugPrint("绘制图表");
     return buildAeroCard(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       child: Column(
@@ -564,17 +583,23 @@ class _HomePageState extends State<HomePage>
             ),
           ),
           Expanded(
-            child: SfCartesianChart(
-              plotAreaBorderWidth: 0,
-              primaryXAxis: const NumericAxis(
-                isVisible: false,
-                decimalPlaces: 0,
-              ),
-              primaryYAxis: const NumericAxis(
-                isVisible: false,
-                maximum: 100,
-              ),
-              series: _getLiveUpdateSeries(),
+            child: ValueListenableBuilder(
+              valueListenable: valueListenable,
+              builder: (context, value, child) {
+                debugPrint("绘制图表-局部刷新");
+                return SfCartesianChart(
+                  plotAreaBorderWidth: 0,
+                  primaryXAxis: const NumericAxis(
+                    isVisible: false,
+                    decimalPlaces: 0,
+                  ),
+                  primaryYAxis: const NumericAxis(
+                    isVisible: false,
+                    maximum: 100,
+                  ),
+                  series: _getLiveUpdateSeries(),
+                );
+              },
             ),
           ),
           Row(

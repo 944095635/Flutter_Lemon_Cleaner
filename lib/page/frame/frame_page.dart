@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lemon_cleaner/page/home/home_page.dart';
 import 'package:lemon_cleaner/widget/window_caption.dart';
+import 'package:lottie/lottie.dart';
 import 'package:window_manager/window_manager.dart';
 
 class FramePage extends StatefulWidget {
@@ -50,6 +51,9 @@ class _FramePageState extends State<FramePage> {
           //   'images/3.json',
           //   fit: BoxFit.none,
           //   alignment: Alignment.bottomRight,
+          // ),
+          // Lottie.asset(
+          //   'images/3.json',
           // ),
           Positioned(
             left: 0,
