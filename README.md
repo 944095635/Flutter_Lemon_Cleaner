@@ -1,16 +1,11 @@
-# lemon_cleaner
+# Flutter 桌面案例程序
 
-A new Flutter project.
+A new Flutter project for windows.
 
-## Getting Started
+<img src="https://raw.githubusercontent.com/944095635/Flutter_Lemon_Cleaner/master/preview/lemon clean.png">
 
-This project is a starting point for a Flutter application.
+视频效果：
+https://raw.githubusercontent.com/944095635/Flutter_Lemon_Cleaner/master/preview/lemon clean demo.mp4
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+设计图来源：
+https://www.ui.cn/detail/582254.html
