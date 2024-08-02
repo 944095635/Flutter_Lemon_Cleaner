@@ -6,9 +6,9 @@ import 'package:lemon_cleaner/page/frame/frame_page.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // PC上面才设置窗口大小
   if (Platform.isWindows || Platform.isMacOS) {
-    WidgetsFlutterBinding.ensureInitialized();
     await windowManager.ensureInitialized();
     WindowOptions windowOptions = const WindowOptions(
       //1232 - 693

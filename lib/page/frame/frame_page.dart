@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lemon_cleaner/page/home/home_page.dart';
-import 'package:lemon_cleaner/widget/window_caption.dart';
-import 'package:lottie/lottie.dart';
 import 'package:window_manager/window_manager.dart';
 
 class FramePage extends StatefulWidget {
@@ -55,11 +53,11 @@ class _FramePageState extends State<FramePage> {
           // Lottie.asset(
           //   'images/3.json',
           // ),
-          Positioned(
+          const Positioned(
             left: 0,
             right: 0,
             top: 0,
-            child: Container(
+            child: SizedBox(
               height: 80,
               //color: Colors.amber,
               child: DragToMoveArea(
@@ -77,7 +75,7 @@ class _FramePageState extends State<FramePage> {
                 onPressed: () {
                   windowManager.close();
                 },
-                icon: HugeIcon(
+                icon: const HugeIcon(
                   icon: HugeIcons.strokeRoundedLogout04,
                   color: Color(0xFF94a0bd),
                 ),
