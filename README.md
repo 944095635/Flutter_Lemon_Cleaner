@@ -2,8 +2,6 @@
 
 失业中，寻一个成都的Flutter工作。
 
-A new Flutter project for windows.
-
 <img src="https://raw.githubusercontent.com/944095635/Flutter_Lemon_Cleaner/master/preview/lemon_clean.png">
 
 视频效果：
