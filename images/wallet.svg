@@ -1,0 +1,65 @@
+<svg width="146.854904" height="146.854919" viewBox="0 0 146.855 146.855" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip26_572">
+			<rect id="Guides" width="23.000000" height="23.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<filter id="filter_26_686_dd" x="27.959839" y="28.147156" width="78.340424" height="84.868774" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feGaussianBlur in="BackgroundImage" stdDeviation="4.35225"/>
+			<feComposite in2="SourceAlpha" operator="in" result="effect_backgroundBlur_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_backgroundBlur_1" result="shape"/>
+		</filter>
+		<filter id="filter_26_687_dd" x="27.959839" y="47.732300" width="91.397171" height="71.812073" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feGaussianBlur in="BackgroundImage" stdDeviation="4.35225"/>
+			<feComposite in2="SourceAlpha" operator="in" result="effect_backgroundBlur_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_backgroundBlur_1" result="shape"/>
+		</filter>
+		<filter id="filter_26_688_dd" x="86.714966" y="67.317322" width="39.170212" height="26.113464" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feGaussianBlur in="BackgroundImage" stdDeviation="1.81344"/>
+			<feComposite in2="SourceAlpha" operator="in" result="effect_backgroundBlur_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_backgroundBlur_1" result="shape"/>
+		</filter>
+		<filter id="filter_26_689_dd" x="93.243683" y="73.845764" width="13.056732" height="13.056732" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feGaussianBlur in="BackgroundImage" stdDeviation="4.35225"/>
+			<feComposite in2="SourceAlpha" operator="in" result="effect_backgroundBlur_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_backgroundBlur_1" result="shape"/>
+		</filter>
+		<clipPath id="clip26_571">
+			<rect id="Wallet" width="146.854904" height="146.854904" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient x1="50.558044" y1="46.712200" x2="101.780624" y2="97.103058" id="paint_linear_26_686_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#7FC0FB"/>
+			<stop offset="1.000000" stop-color="#4088F4"/>
+		</linearGradient>
+		<linearGradient x1="21.431473" y1="54.260658" x2="135.677917" y2="129.336914" id="paint_linear_26_687_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFFFFF"/>
+			<stop offset="1.000000" stop-color="#FFFFFF" stop-opacity="0.000000"/>
+		</linearGradient>
+		<linearGradient x1="98.014069" y1="73.029648" x2="123.625351" y2="88.534531" id="paint_linear_26_688_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#7FC0FB"/>
+			<stop offset="1.000000" stop-color="#4088F4"/>
+		</linearGradient>
+	</defs>
+	<rect id="Wallet" width="146.854904" height="146.854904" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip26_571)">
+		<g filter="url(#filter_26_686_dd)">
+			<rect id="Rectangle 13" x="27.959839" y="28.147156" rx="19.585104" width="78.340424" height="84.868790" fill="url(#paint_linear_26_686_0)" fill-opacity="1.000000"/>
+		</g>
+		<g filter="url(#filter_26_687_dd)">
+			<rect id="Rectangle 12" x="27.959839" y="47.732300" rx="19.585104" width="91.397171" height="71.812057" fill="#B9DDFF" fill-opacity="0.600000"/>
+			<rect id="Rectangle 12" x="28.265793" y="48.038239" rx="19.585104" width="90.785278" height="71.200165" stroke="url(#paint_linear_26_687_0)" stroke-opacity="1.000000" stroke-width="0.611895"/>
+		</g>
+		<g filter="url(#filter_26_688_dd)">
+			<rect id="Rectangle 22" x="86.714966" y="67.317322" rx="8.160460" width="39.170212" height="26.113474" fill="url(#paint_linear_26_688_0)" fill-opacity="1.000000"/>
+		</g>
+		<g filter="url(#filter_26_689_dd)">
+			<rect id="Rectangle 21" x="106.300415" y="73.845764" rx="6.528368" width="13.056737" height="13.056737" transform="rotate(90 106.300415 73.845764)" fill="#FFFFFF" fill-opacity="1.000000"/>
+		</g>
+	</g>
+</svg>
