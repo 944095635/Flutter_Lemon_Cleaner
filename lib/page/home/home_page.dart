@@ -7,9 +7,13 @@ import 'package:flutter_styled/radius_extension.dart';
 import 'package:flutter_styled/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lemon_cleaner/model/chart_sample_data.dart';
+import 'package:lemon_cleaner/page/clean/clean_page.dart';
+import 'package:lemon_cleaner/widget/background/background.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:window_manager/window_manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -78,16 +82,35 @@ class _HomePageState extends State<HomePage>
       // 安卓只显示左侧盒子
       return buildLeftBox();
     }
-    return Row(
-      children: [
-        SizedBox(
-          width: 360,
-          child: buildLeftBox(),
-        ),
-        Expanded(
-          child: buildRightBox(),
-        )
-      ],
+    return Background(
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          const Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            child: SizedBox(
+              height: 80,
+              //color: Colors.amber,
+              child: DragToMoveArea(
+                child: SizedBox(),
+              ),
+            ),
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 360,
+                child: buildLeftBox(),
+              ),
+              Expanded(
+                child: buildRightBox(),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -206,7 +229,7 @@ class _HomePageState extends State<HomePage>
                     ],
                     child: InkWell(
                       onTap: () {
-                        debugPrint("x");
+                        toCleanPage();
                       },
                       child: const Center(
                         child: Text(
@@ -632,5 +655,20 @@ class _HomePageState extends State<HomePage>
       //   animationDuration: 0,
       // )
     ];
+  }
+
+  /// 跳转到清理页面
+  void toCleanPage() {
+    debugPrint("x");
+    Get.to(
+      () => const CleanPage(),
+      id: 1,
+      fullscreenDialog: true,
+      transition: Transition.fadeIn,
+    );
+    // Navigator.push(
+    //   Get.nestedKey(1)!.currentContext!,
+    //   MaterialPageRoute(builder: (context) => const CleanPage()),
+    // );
   }
 }

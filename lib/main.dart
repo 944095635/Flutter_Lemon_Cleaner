@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:lemon_cleaner/page/frame/frame_page.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -32,15 +33,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       locale: const Locale("zh", "CN"),
+      defaultTransition: Transition.noTransition,
       theme: ThemeData(
         fontFamily: "Mi",
         //fontFamily: "微软雅黑",
         //fontFamily: "ITCAvantGarde",
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.transparent,
         appBarTheme: const AppBarTheme(
           toolbarHeight: 0,
           backgroundColor: Colors.transparent,
