@@ -8,7 +8,7 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // PC上面才设置窗口大小
-  if (Platform.isWindows || Platform.isMacOS) {
+  if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
     await windowManager.ensureInitialized();
     WindowOptions windowOptions = const WindowOptions(
       //1232 - 693

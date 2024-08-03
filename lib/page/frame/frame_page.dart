@@ -67,7 +67,7 @@ class _FramePageState extends State<FramePage> {
           ),
           const HomePage(),
           // 手机才显示右侧的系统按钮
-          if (Platform.isWindows || Platform.isMacOS) ...{
+          if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) ...{
             Positioned(
               top: 26,
               right: 16,
