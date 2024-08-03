@@ -1,6 +1,6 @@
 # Flutter 桌面案例程序
 
-A new Flutter project for windows.
+失业中，寻一个成都的Flutter工作。
 
 <img src="https://raw.githubusercontent.com/944095635/Flutter_Lemon_Cleaner/master/preview/lemon_clean.png">
 
