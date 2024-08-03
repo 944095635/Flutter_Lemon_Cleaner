@@ -46,7 +46,7 @@ class _CleanPageState extends State<CleanPage>
 
     shaderProgram = moonShaderProgram;
     setState(() {});
-    _ticker = createTicker(_onTick);
+    _ticker = createTicker(_onTick)..start();
   }
 
   @override
@@ -69,7 +69,7 @@ class _CleanPageState extends State<CleanPage>
                 valueListenable: _elapsedTime,
                 builder: (context, value, child) {
                   return Opacity(
-                    opacity: .1,
+                    opacity: 1,
                     child: CustomPaint(
                       painter: ShaderPainter(
                         shader: shaderProgram!.fragmentShader(),
