@@ -12,6 +12,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:lemon_cleaner/model/chart_sample_data.dart';
 import 'package:lemon_cleaner/page/clean/clean_page.dart';
 import 'package:lemon_cleaner/widget/background/background.dart';
+import 'package:lemon_cleaner/widget/background/moon_bg.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -25,11 +26,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   /// 旋转动画控制器
-  late AnimationController _controller;
+  //late AnimationController _controller;
 
   // 动画效果序号 1-10
-  int animationType = 0;
-
+  //int animationType = 0;
+  
+  /// 定时器
   Timer? timer;
 
   //Cpu使用率
@@ -61,10 +63,10 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 20),
-    )..repeat();
+    // _controller = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(seconds: 20),
+    // )..repeat();
     valueListenable = ValueNotifier(wave1);
   }
 
@@ -72,7 +74,7 @@ class _HomePageState extends State<HomePage>
   void dispose() {
     super.dispose();
     timer?.cancel();
-    _controller.dispose();
+    //_controller.dispose();
   }
 
   @override
@@ -140,20 +142,22 @@ class _HomePageState extends State<HomePage>
         Expanded(
           child: Column(
             children: [
-              SizedBox(
-                width: 240,
-                height: 340,
+              const Spacer(),
+              const SizedBox(
+                width: 300,
+                height: 300,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
                     // Lottie.asset(
                     //   'images/2.json',
                     // ),
-                    RotationTransition(
-                      turns: _controller, // 使用 AnimationController 控制旋转
-                      child: Image.asset("images/sylops-symbol.png"),
-                    ),
-                    const Column(
+                    // RotationTransition(
+                    //   turns: _controller, // 使用 AnimationController 控制旋转
+                    //   child: Image.asset("images/sylops-symbol.png"),
+                    // ),
+                    MoonBgWidget(),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(

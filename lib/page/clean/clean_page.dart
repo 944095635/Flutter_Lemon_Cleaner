@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_styled/radius_extension.dart';
 import 'package:flutter_styled/size_extension.dart';
+import 'package:lemon_cleaner/utils/shader_painter.dart';
 import 'package:lemon_cleaner/widget/background/background.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -66,19 +67,17 @@ class _CleanPageState extends State<CleanPage>
             const SizedBox(),
           } else ...{
             ValueListenableBuilder<double>(
-                valueListenable: _elapsedTime,
-                builder: (context, value, child) {
-                  return Opacity(
-                    opacity: 1,
-                    child: CustomPaint(
-                      painter: ShaderPainter(
-                        shader: shaderProgram!.fragmentShader(),
-                        shaderSize: MediaQuery.of(context).size,
-                        time: value,
-                      ),
-                    ),
-                  );
-                })
+              valueListenable: _elapsedTime,
+              builder: (context, value, child) {
+                return CustomPaint(
+                  painter: ShaderPainter(
+                    shader: shaderProgram!.fragmentShader(),
+                    shaderSize: MediaQuery.of(context).size,
+                    time: value,
+                  ),
+                );
+              },
+            ),
           },
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -147,38 +146,5 @@ class _CleanPageState extends State<CleanPage>
 
   void _onTick(Duration elapsed) {
     _elapsedTime.value = _elapsedTime.value + 0.02;
-  }
-}
-
-class ShaderPainter extends CustomPainter {
-  ShaderPainter({
-    super.repaint,
-    required this.shader,
-    required this.shaderSize,
-    required this.time,
-  });
-
-  final FragmentShader shader;
-  final Size shaderSize;
-  final double time;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    shader.setFloat(0, shaderSize.width);
-    shader.setFloat(1, shaderSize.height);
-    shader.setFloat(2, time);
-    canvas.drawColor(Colors.white, BlendMode.color);
-
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, shaderSize.width, shaderSize.height),
-      Paint()..shader = shader,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant ShaderPainter oldDelegate) {
-    return shader != oldDelegate.shader ||
-        time != oldDelegate.time ||
-        shaderSize != oldDelegate.shaderSize;
   }
 }

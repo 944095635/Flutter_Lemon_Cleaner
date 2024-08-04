@@ -17,12 +17,13 @@ class Background extends StatelessWidget {
         const DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
               colors: [
-                Color(0xFF302F43),
+                Color(0xFF34364b),
                 Color(0xFF43556E),
               ],
+              stops: [0.5, 1],
             ),
           ),
         ),

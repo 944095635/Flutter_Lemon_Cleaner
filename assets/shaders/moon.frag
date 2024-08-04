@@ -173,7 +173,7 @@ void main() {
 
     vec2 e = ray_vs_sphere(eye, dir, R);
     if(e.x > e.y) {
-        fragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        //fragColor = vec4(0.203, 0.211, 0.294, 1.0);
         return;
     }
 
@@ -182,5 +182,11 @@ void main() {
 
     vec3 I = in_scatter(eye, dir, e, l);
 
-    fragColor = vec4(pow(I, vec3(1.0 / 2.2)), 1.0);
+    //fragColor = vec4(pow(I, vec3(1.0 / 2.2)), 1.0);
+
+    // 背景色
+    vec4 bg = vec4(0.203, 0.211, 0.294, 1.0);
+    // 前景
+    vec4 fg = vec4( pow( I, vec3( 1.0 / 1.0 ) ), 1.0 );
+    fragColor = vec4(1.0) - (vec4(1.0) - fg) * (vec4(1.0) - bg);
 }
