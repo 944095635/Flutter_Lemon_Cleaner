@@ -34,8 +34,8 @@ class _CleanPageState extends State<CleanPage>
   }
 
   void init() async {
-    final moonShaderProgram = await FragmentProgram.fromAsset(
-        'assets/shaders/atmospheric_scattering.frag');
+    final moonShaderProgram =
+        await FragmentProgram.fromAsset('assets/shaders/moon.frag');
     // final gameShaderProgram = await FragmentProgram.fromAsset(
     //     'assets/shaders/spherical_polyhedra.frag');
     // final glowingShaderProgram =
