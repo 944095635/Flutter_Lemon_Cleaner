@@ -1,6 +1,6 @@
 # Flutter 桌面案例程序
 
-失业中，寻一个成都的Flutter工作。
+失业中，写几个DEMO玩。
 
 ## Windows 11
 
