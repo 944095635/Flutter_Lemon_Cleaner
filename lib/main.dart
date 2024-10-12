@@ -12,7 +12,7 @@ void main() async {
   if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
     await windowManager.ensureInitialized();
     WindowOptions windowOptions = const WindowOptions(
-      //1232 - 693
+      //1232 - 6937
       size: Size(1230, 690),
       center: true,
       maximumSize: Size(1230, 690),

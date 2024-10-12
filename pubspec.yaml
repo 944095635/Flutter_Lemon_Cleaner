@@ -39,7 +39,7 @@ dependencies:
   hugeicons: ^0.0.7  #图标
   # lottie: ^3.1.2  #动画
   animate_gradient: ^0.0.3  #渐变背景
-  syncfusion_flutter_charts: ^26.2.7 #图表
+  syncfusion_flutter_charts: ^27.1.52 #图表
   flutter_svg: ^2.0.10+1 #SVG图标
   window_manager: ^0.3.9
   flutter_styled:    #布局样式
