@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage>
 
   // 动画效果序号 1-10
   //int animationType = 0;
-  
+
   /// 定时器
   Timer? timer;
 
@@ -339,7 +339,7 @@ class _HomePageState extends State<HomePage>
                         child: buildDataCard(
                           name: "系统安全",
                           tips: "系统扫描",
-                          image: "images/Security.svg",
+                          img: "images/security.png",
                         ),
                       ),
                       20.verticalSpace,
@@ -347,7 +347,7 @@ class _HomePageState extends State<HomePage>
                         child: buildDataCard(
                           name: "相册优化",
                           tips: "20个相似文件",
-                          image: "images/picture.svg",
+                          img: "images/gallery.png",
                         ),
                       ),
                     ],
@@ -362,15 +362,18 @@ class _HomePageState extends State<HomePage>
                         child: buildDataCard(
                           name: "文件清理",
                           tips: "1236个垃圾文件",
-                          image: "images/folder.svg",
+                          size: 55,
+                          padding: const EdgeInsets.only(left: 10),
+                          img: "images/folder.png",
                         ),
                       ),
                       20.verticalSpace,
                       Expanded(
                         child: buildDataCard(
                           name: "保险箱",
+                          size: 55,
                           tips: "保护您的隐私安全",
-                          image: "images/suitcase.svg",
+                          img: "images/lock.png",
                         ),
                       ),
                     ],
@@ -392,7 +395,8 @@ class _HomePageState extends State<HomePage>
                   child: buildDataCard(
                     name: "我的钱包",
                     tips: "资产安全",
-                    image: "images/wallet.svg",
+                    size: 50,
+                    img: "images/wallet.png",
                     showButton: false,
                   ),
                 ),
@@ -400,8 +404,10 @@ class _HomePageState extends State<HomePage>
                 Flexible(
                   child: buildDataCard(
                     name: "吐个槽",
+                    size: 50,
+                    padding: const EdgeInsets.only(left: 5, top: 5),
                     tips: "提出宝贵的建议",
-                    image: "images/chat.svg",
+                    img: "images/chat.png",
                     showButton: false,
                   ),
                 ),
@@ -511,7 +517,9 @@ class _HomePageState extends State<HomePage>
   Widget buildDataCard({
     required String name,
     required String tips,
-    required String image,
+    String? img,
+    double size = 60,
+    EdgeInsetsGeometry padding = EdgeInsets.zero,
     bool showButton = true,
   }) {
     return buildAeroCard(
@@ -527,12 +535,17 @@ class _HomePageState extends State<HomePage>
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset(
-                image,
-                height: 60,
-                //抗锯齿
-                //isAntiAlias: true,
-              ),
+              if (img != null) ...{
+                Padding(
+                  padding: padding,
+                  child: Image.asset(
+                    img,
+                    fit: BoxFit.contain,
+                    height: size,
+                    width: size,
+                  ),
+                ),
+              },
               if (showButton) ...{
                 IconButton(
                   onPressed: () {},
