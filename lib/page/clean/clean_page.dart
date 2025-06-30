@@ -105,7 +105,7 @@ class _CleanPageState extends State<CleanPage>
                   width: 230,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(.3),
+                    color: Colors.white.withAlpha(76),
                     borderRadius: 10.borderRadius,
                   ),
                   child: const Center(
